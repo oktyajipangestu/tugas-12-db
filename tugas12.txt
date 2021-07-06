@@ -1,0 +1,20 @@
+1. Buat view nilai_ipk yang diambil dari tabel nilai_mahasiswa. View ini terdiri dari kolom nim, nama, dan IPK. Tampilan akhir view adalah sebagai berikut:
+jawab:
+create view nilai_ipk as
+    -> select
+    -> nim, nama,
+    -> ((semester_1 + semester_2 + semester_3)/3) as 'IPK'
+    -> from nilai_mahasiswa;
+
+2. Buat view kedua dengan nama nilai_ipk_format. Isi view ini diambil dari view nilai_ipk. Tampilan akhir view adalah sebagai berikut:
+jawab:
+create view nilai_ipk_format as
+    -> select
+    -> concat(nama, ' ', '(', IPK, ')') as `Nama dan IPK`
+    -> from nilai_ipk;
+
+4. Tampilkan mahasiswa yang namanya diawali dengan huruf R. Data ini diambil dari view nilai_ipk_format. Berikut tampilan akhir yang diiginkan:
+select * from nilai_ipk_format where `Nama dan IPK` like 'R%';
+
+5. Hapus view nilai_ipk dan nilai_ipk_format.
+ drop view nilai_ipk, nilai_ipk_format;
